@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+ <meta charset="UTF-8" />
+ <title>Index</title>
+ <script>
+        function mensaje(){
+            var x = document.getElementById("cuadroTexto");
+            if(document.getElementById('r3').checked){
+                x.innerHTML = "<input type='text' name='entrada' id='entradatext'>";
+                x.style.visibility = 'visible';
+            }else{ 
+                x.style.visibility = 'hidden';
+            }
+        }
+        
+        function agreagarLi(){
+    var texto=document.getElementById('liname').value;
+    var li=document.createElement('LI');
+    li.innerHTML=texto==''?'(nada)':texto;
+    document.getElementById('lista').appendChild(li);
+}
+function borrar(){
+    lis=document.getElementById('lista').getElementsByTagName('li');
+    for(var i=0; i<lis.length;i++){
+        lis[i].onclick=function(){
+            if(confirm('¿Borrar este li?'))
+            this.parentNode.removeChild(this);
+        };
+    }
+    
+}
+
+    </script>
+</head>
+<body>
+    <h1>Seleccione un curso</h1>
+        <div>
+                <input type="radio" name="ejemplo" id="r1" value="radio1" onclick="mensaje()"> HTML<br>
+                <input type="radio" name="ejemplo" id="r2" value = "radio2" onclick="mensaje()"> CSS<br>
+                <input type="radio" name="ejemplo" id="r3" value="radio3" onclick="mensaje()"> Otro
+        
+                <div id="cuadroTexto">
+        
+                </div>
+                <input type="submit" value="Enviar" >
+
+                <br>
+                <br>
+
+                <input type="text" id="liname" value="nuevo" />
+                <input type="button" onclick="agreagarLi();" value="Agregar" />
+                <ul id="lista" onclick="borrar();">
+                <li>Elemento de lista 1</li>
+                <li>Elemento de lista 2</li>
+
+
+</body>
+</html>
